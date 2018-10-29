@@ -29,9 +29,8 @@ async function runTests() {
   // require("./errors/datastore-key-issue");
   console.log("Running allOperations");
 
-  await runCachingChecks();
+  // await runCachingChecks();
 
-/*
   await runAllOperations("BASIC_NO_CACHE");
   await testPickingOut();
 
@@ -47,7 +46,6 @@ async function runTests() {
   await runCachingSerializationTests();
 
   await TestEntityIntIdModel.delete((await TestEntityIntIdModel.query().run()).entities).run();
-*/
 
   console.log("Finished");
 

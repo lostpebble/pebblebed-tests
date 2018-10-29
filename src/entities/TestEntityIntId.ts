@@ -1,6 +1,5 @@
 import { Pebblebed, types, } from "pebblebed";
 import { DefaultDateTimeNow, ICoordinates } from "../dataTypes/dataTypes";
-import { reviveDateObjects } from "../../../src/utility/serialization";
 
 export interface IDSTestEntityIntId {
   idThing?: number;
@@ -30,7 +29,6 @@ const schema = Pebblebed.createSchema<IDSTestEntityIntId>({
   }),
   testSerialization: types.serializedJson({
     indexed: false,
-    reviver: reviveDateObjects,
   }),
 }).setDefaultMeta({
   nullValueIfUnset: false,

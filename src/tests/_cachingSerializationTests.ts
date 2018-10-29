@@ -1,6 +1,6 @@
 import { IDSTestEntityIntId, TestEntityIntIdModel } from "../entities/TestEntityIntId";
-import { Pebblebed } from "../../../src";
 import { waitSeconds } from "../utility";
+import { Pebblebed } from "pebblebed";
 
 export async function runCachingSerializationTests() {
   Pebblebed.setCacheEnabledDefaults({

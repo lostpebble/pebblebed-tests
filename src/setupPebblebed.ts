@@ -5,4 +5,4 @@ import { Pebblebed } from "pebblebed";
 const datastore = datastoreLib();
 
 Pebblebed.connectDatastore(datastore);
-Pebblebed.setDefaultNamespace("pebbledbed-test-namespace");
+Pebblebed.setDefaultNamespace("pebblebed-test-namespace");

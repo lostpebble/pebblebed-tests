@@ -1,13 +1,11 @@
-import { Pebblebed, PebblebedDefaultRedisCacheStore } from "pebblebed";
+import { Pebblebed, PebblebedDefaultRedisCacheStore, DatastoreEntityKey } from "pebblebed";
 import * as IoRedisLib from "ioredis";
-import { DatastoreEntityKey } from "../../../src";
 const redis = new IoRedisLib();
 
 export async function runCachingChecks() {
   const redisCacheStore = new PebblebedDefaultRedisCacheStore(redis);
 
   const keyOne: DatastoreEntityKey = Pebblebed.ds.key({
-    namespace: null,
     path: [ "TestEntity", Pebblebed.dsLibrary.int("922337203685477"), "AnotherEntity", "123asd-eggs" ],
   });
 
@@ -17,7 +15,6 @@ export async function runCachingChecks() {
   console.log(cacheKeyOne);
 
   const keyTwo: DatastoreEntityKey = Pebblebed.ds.key({
-    namespace: null,
     path: [ "TestEntity", 922337203685477, "AnotherEntity", "123asd-eggs" ],
   });
 
