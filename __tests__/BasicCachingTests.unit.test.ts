@@ -20,11 +20,17 @@ describe(`It should cache entities`, () => {
       date: new Date(),
       tags: ["egg", "salad"],
       amount: 2032.2323,
+      deepNumberArray: [
+        {
+          num: 2322.22
+        },
+        { num: 222222222 }
+      ]
     };
 
     const {
       savedEntities: [savedEntity],
-      generatedIds: [genId],
+      generatedIds: [genId]
     } = await TestEntityIntIdModel.save(newEntity)
       .enableCaching(true)
       .cachingSeconds(100)
@@ -37,10 +43,15 @@ describe(`It should cache entities`, () => {
 
     expect(savedEntity).toEqual(newEntity);
 
-    const cachedEntity = await TestEntityIntIdModel.load(genId).first().run();
+    const cachedEntity = await TestEntityIntIdModel.load(genId)
+      .first()
+      .run();
 
     await waitSeconds(0.5);
-    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId).enableCaching(false).first().run();
+    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(false)
+      .first()
+      .run();
 
     expect(cachedEntity).toEqual(savedEntity);
     expect(cachedEntity).toEqual(loadedNoCacheEntity);
@@ -60,9 +71,14 @@ describe(`It should cache entities`, () => {
 
     expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
 
-    await TestEntityIntIdModel.delete().idsOrKeys(genId).run();
+    await TestEntityIntIdModel.delete()
+      .idsOrKeys(genId)
+      .run();
     await waitSeconds(0.5);
-    const afterDeleteEntity = await TestEntityIntIdModel.load(genId).enableCaching(true).first().run();
+    const afterDeleteEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(true)
+      .first()
+      .run();
 
     expect(afterDeleteEntity).toEqual(null);
 
@@ -76,19 +92,26 @@ describe(`It should cache entities`, () => {
       amount: 2032.2323,
       location: {
         latitude: 23.223,
-        longitude: -33.2221,
+        longitude: -33.2221
       },
       object: { test: "something" },
       worthy: false,
-      testSerialization:  {
+      testSerialization: {
         somethingElse: "serialized",
-        time: new Date("2019-03-13T17:16:34.099Z"),
+        time: new Date("2019-03-13T17:16:34.099Z")
       },
+      deepNumberArray: [
+        {
+          num: 2322.22
+        },
+        { num: 222222222 }
+      ],
+      numberArray: [2222.22, 5123123, -99999.223]
     };
 
     const {
       savedEntities: [savedEntity],
-      generatedIds: [genId],
+      generatedIds: [genId]
     } = await TestEntityIntIdModel.save(newEntity)
       .enableCaching(true)
       .cachingSeconds(100)
@@ -96,10 +119,15 @@ describe(`It should cache entities`, () => {
       .generateUnsetIds()
       .run();
 
-    const cachedEntity = await TestEntityIntIdModel.load(genId).first().run();
+    const cachedEntity = await TestEntityIntIdModel.load(genId)
+      .first()
+      .run();
 
     await waitSeconds(0.5);
-    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId).enableCaching(false).first().run();
+    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(false)
+      .first()
+      .run();
 
     expect(cachedEntity).toEqual(savedEntity);
     expect(cachedEntity).toEqual(loadedNoCacheEntity);
@@ -111,6 +139,8 @@ describe(`It should cache entities`, () => {
     expect(newEntity.amount).toEqual(cachedEntity.amount);
     expect(newEntity.date).toEqual(cachedEntity.date);
     expect(newEntity.tags).toEqual(cachedEntity.tags);
+    expect(newEntity.deepNumberArray).toEqual(cachedEntity.deepNumberArray);
+    expect(newEntity.numberArray).toEqual(cachedEntity.numberArray);
 
     delete cachedEntity.date;
     delete newEntity.date;
@@ -127,9 +157,14 @@ describe(`It should cache entities`, () => {
 
     expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
 
-    await TestEntityIntIdModel.delete().idsOrKeys(genId).run();
+    await TestEntityIntIdModel.delete()
+      .idsOrKeys(genId)
+      .run();
     await waitSeconds(0.5);
-    const afterDeleteEntity = await TestEntityIntIdModel.load(genId).enableCaching(true).first().run();
+    const afterDeleteEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(true)
+      .first()
+      .run();
 
     expect(afterDeleteEntity).toEqual(null);
 
@@ -146,11 +181,13 @@ describe(`It should cache entities`, () => {
       object: undefined,
       worthy: undefined,
       testSerialization: undefined,
+      numberArray: undefined,
+      deepNumberArray: undefined
     };
 
     const {
       savedEntities: [savedEntity],
-      generatedIds: [genId],
+      generatedIds: [genId]
     } = await TestEntityIntIdModel.save(newEntity)
       .enableCaching(true)
       .cachingSeconds(100)
@@ -158,16 +195,23 @@ describe(`It should cache entities`, () => {
       .generateUnsetIds()
       .run();
 
-    const cachedEntity = await TestEntityIntIdModel.load(genId).first().run();
+    const cachedEntity = await TestEntityIntIdModel.load(genId)
+      .first()
+      .run();
 
     await waitSeconds(0.5);
-    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId).enableCaching(false).first().run();
+    const loadedNoCacheEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(false)
+      .first()
+      .run();
 
     delete newEntity.worthy;
     delete newEntity.object;
     delete newEntity.tags;
     newEntity.date = savedEntity.date;
     delete newEntity.location;
+    delete newEntity.numberArray;
+    delete newEntity.deepNumberArray;
 
     expect(cachedEntity).toEqual(savedEntity);
     expect(cachedEntity).toEqual(loadedNoCacheEntity);
@@ -179,10 +223,15 @@ describe(`It should cache entities`, () => {
     expect(newEntity.amount).toEqual(cachedEntity.amount);
     expect(newEntity.date).toEqual(cachedEntity.date);
     expect(newEntity.tags).toEqual(cachedEntity.tags);
+    expect(newEntity.deepNumberArray).toEqual(cachedEntity.deepNumberArray);
+    expect(newEntity.numberArray).toEqual(cachedEntity.numberArray);
 
     await TestEntityIntIdModel.delete(savedEntity).run();
     await waitSeconds(0.5);
-    const afterDeleteEntity = await TestEntityIntIdModel.load(genId).enableCaching(true).first().run();
+    const afterDeleteEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(true)
+      .first()
+      .run();
 
     expect(afterDeleteEntity).toEqual(null);
 
@@ -213,28 +262,45 @@ describe(`It should cache entities`, () => {
       amount: 2032.2323,
       location: {
         latitude: 23.223,
-        longitude: -33.2221,
+        longitude: -33.2221
       },
-      object: { test: "something" },
+      object: {
+        test: "something",
+        somethingDeeper: { again: 222333, great: false, next: [10, 9, 8] }
+      },
       worthy: false,
-      testSerialization:  {
+      testSerialization: {
         somethingElse: "serialized",
-        time: new Date("2019-03-13T17:25:09.479Z"),
+        time: new Date("2019-03-13T17:25:09.479Z")
       },
+      deepNumberArray: [
+        {
+          num: 2322.22
+        },
+        { num: 222222222 }
+      ],
+      numberArray: [2222.22, 5123123, -99999.223]
     };
 
     const {
-      savedEntities: [savedEntity],
+      savedEntities: [savedEntity]
     } = await TestEntityIntIdModel.save(newEntity)
       .enableCaching(true)
       .cachingSeconds(100)
       .returnSavedEntities()
       .run();
 
-    const cachedEntity = await TestEntityIntIdModel.load(newEntity.idThing).first().run();
+    const cachedEntity = await TestEntityIntIdModel.load(newEntity.idThing)
+      .first()
+      .run();
 
     await waitSeconds(0.5);
-    const loadedNoCacheEntity = await TestEntityIntIdModel.load(newEntity.idThing).enableCaching(false).first().run();
+    const loadedNoCacheEntity = await TestEntityIntIdModel.load(
+      newEntity.idThing
+    )
+      .enableCaching(false)
+      .first()
+      .run();
 
     expect(cachedEntity).toEqual(savedEntity);
     expect(cachedEntity).toEqual(loadedNoCacheEntity);
@@ -242,7 +308,10 @@ describe(`It should cache entities`, () => {
     newEntity.idThing = savedEntity.idThing;
     await TestEntityIntIdModel.delete(newEntity).run();
     await waitSeconds(0.5);
-    const afterDeleteEntity = await TestEntityIntIdModel.load(newEntity.idThing).enableCaching(true).first().run();
+    const afterDeleteEntity = await TestEntityIntIdModel.load(newEntity.idThing)
+      .enableCaching(true)
+      .first()
+      .run();
 
     expect(afterDeleteEntity).toEqual(null);
 
@@ -253,6 +322,8 @@ describe(`It should cache entities`, () => {
     expect(newEntity.amount).toEqual(cachedEntity.amount);
     expect(newEntity.date).toEqual(cachedEntity.date);
     expect(newEntity.tags).toEqual(cachedEntity.tags);
+    expect(newEntity.deepNumberArray).toEqual(cachedEntity.deepNumberArray);
+    expect(newEntity.numberArray).toEqual(cachedEntity.numberArray);
 
     delete cachedEntity.date;
     delete newEntity.date;

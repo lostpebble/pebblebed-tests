@@ -23,6 +23,8 @@ const schema = Pebblebed.createSchema<IDSTestEntityIntId>({
     indexed: false,
     reviver: reviveDateObjects,
   }),
+  deepNumberArray: types.array({ indexed: false }),
+  numberArray: types.array({ indexed: false }),
 }).setDefaultMeta({
   nullValueIfUnset: false,
 });

@@ -12,12 +12,17 @@ export interface IDSTestEntityBase {
     time: Date;
     [key: string]: any;
   };
+  numberArray?: number[];
+  deepNumberArray?: { num: number; }[];
 }
 
 const tags = ["egg", "salad", "green", "blue", "ham", "great", "dont"];
 const trueOrFalse = () => random(1) === 1;
 
 export function createNewTestEntityId(withAll: boolean = false): IDSTestEntityBase {
+  const numberArray = [123123, 222.233, 99595, 2220031];
+  const deepNumberArray = [{ num: 23123.22 }, { num: 239992 }];
+
   return {
     amount: random(999999, true),
     date: withAll || trueOrFalse() ? new Date() : undefined,
@@ -31,5 +36,7 @@ export function createNewTestEntityId(withAll: boolean = false): IDSTestEntityBa
     worthy: withAll || trueOrFalse() ? trueOrFalse() : undefined,
     object: withAll || trueOrFalse() ? { test: "something" } : undefined,
     testSerialization: withAll || trueOrFalse() ? { time: new Date(), serialized: "serialized-test-thing" } : undefined,
+    numberArray,
+    deepNumberArray,
   };
 }
