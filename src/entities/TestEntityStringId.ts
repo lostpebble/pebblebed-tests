@@ -1,16 +1,14 @@
-import {
-  types,
-  Pebblebed,
-} from "pebblebed";
-import { DefaultDateTimeNow, ICoordinates } from "../dataTypes/dataTypes";
+import { Pebblebed, types, } from "pebblebed";
+import { DefaultDateTimeNow } from "../dataTypes/dataTypes";
+import { IDSTestEntityBase } from "./EntityCreation";
 
-export interface IDSTestEntityStringId {
+export interface IDSTestEntityStringId extends IDSTestEntityBase {
   idThing: string;
-  date?: Date;
-  tags: string[];
-  amount?: number;
-  location?: ICoordinates;
-  worthy?: boolean;
+  // date?: Date;
+  // tags: string[];
+  // amount?: number;
+  // location?: ICoordinates;
+  // worthy?: boolean;
 }
 
 const schema = Pebblebed.createSchema<IDSTestEntityStringId>({

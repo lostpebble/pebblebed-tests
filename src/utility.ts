@@ -42,3 +42,21 @@ export function printMarkMeasurements(markEntries: PerformanceEntry[], prefix: s
 
   // console.log(`${prefix}Total elapsed time from [${markEntries[0].name}] -> [${markEntries[markEntries.length - 1].name}] : ${Math.round(performance.getEntriesByName(`${prefix}TOTAL_TIME`)[0].duration)} ms`)
 }
+
+export function reviveDateObjects(key, value) {
+  if (isSerializedDate(value)) {
+    return new Date(value);
+  }
+
+  return value;
+}
+
+const datePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+
+function isSerializedDate(value) {
+  return isString(value) && value.length > 15 && value.length < 30 && datePattern.test(value);
+}
+
+function isString(value) {
+  return {}.toString.call(value) === "[object String]";
+}

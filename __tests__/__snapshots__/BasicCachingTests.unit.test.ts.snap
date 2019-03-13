@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should cache entities Should create, save and load the same exact entity (basic) 1`] = `
+Object {
+  "loadedNoCacheEntity": Object {
+    "amount": 2032.2323,
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+  },
+  "newEntity": Object {
+    "amount": 2032.2323,
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+  },
+  "savedEntity": Object {
+    "amount": 2032.2323,
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+  },
+}
+`;
+
+exports[`It should cache entities Should create, save and load the same exact entity (with deliberate undefined set) 1`] = `
+Object {
+  "loadedNoCacheEntity": Object {
+    "amount": 203222223.2322113,
+  },
+  "newEntity": Object {
+    "amount": 203222223.2322113,
+    "testSerialization": undefined,
+  },
+  "savedEntity": Object {
+    "amount": 203222223.2322113,
+  },
+}
+`;
+
+exports[`It should cache entities Should create, save and load the same exact entity (with deliberately set ID) 1`] = `
+Object {
+  "loadedNoCacheEntity": Object {
+    "amount": 2032.2323,
+    "idThing": "293939223",
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:25:09.479Z,
+    },
+    "worthy": false,
+    Symbol(KEY): Key {
+      "id": "293939223",
+      "kind": "TestEntityIntId",
+      "namespace": "pebblebed-test-namespace",
+      "path": Array [
+        "TestEntityIntId",
+        "293939223",
+      ],
+    },
+  },
+  "newEntity": Object {
+    "amount": 2032.2323,
+    "idThing": "293939223",
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:25:09.479Z,
+    },
+    "worthy": false,
+  },
+  "savedEntity": Object {
+    "amount": 2032.2323,
+    "idThing": "293939223",
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:25:09.479Z,
+    },
+    "worthy": false,
+    Symbol(KEY): Key {
+      "id": "293939223",
+      "kind": "TestEntityIntId",
+      "namespace": "pebblebed-test-namespace",
+      "path": Array [
+        "TestEntityIntId",
+        "293939223",
+      ],
+    },
+  },
+}
+`;
+
+exports[`It should cache entities Should create, save and load the same exact entity (with random props) 1`] = `
+Object {
+  "loadedNoCacheEntity": Object {
+    "amount": 2032.2323,
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:16:34.099Z,
+    },
+    "worthy": false,
+  },
+  "newEntity": Object {
+    "amount": 2032.2323,
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:16:34.099Z,
+    },
+    "worthy": false,
+  },
+  "savedEntity": Object {
+    "amount": 2032.2323,
+    "location": Object {
+      "latitude": 23.223,
+      "longitude": -33.2221,
+    },
+    "object": Object {
+      "test": "something",
+    },
+    "tags": Array [
+      "egg",
+      "salad",
+    ],
+    "testSerialization": Object {
+      "somethingElse": "serialized",
+      "time": 2019-03-13T17:16:34.099Z,
+    },
+    "worthy": false,
+  },
+}
+`;

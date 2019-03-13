@@ -2,12 +2,16 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "jsx": "react",
     "noEmitOnError": true,
     "noImplicitAny": false,
     "allowJs": false,
     "experimentalDecorators": true,
     "sourceMap": false,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "preserveSymlinks": true
   },
   "exclude": [
     "dist",

@@ -1,18 +1,10 @@
-import { Pebblebed, types, } from "pebblebed";
+import { Pebblebed, types } from "pebblebed";
 import { DefaultDateTimeNow, ICoordinates } from "../dataTypes/dataTypes";
+import { IDSTestEntityBase } from "./EntityCreation";
+import { reviveDateObjects } from "../utility";
 
-export interface IDSTestEntityIntId {
-  idThing?: number;
-  date?: Date;
-  tags: string[];
-  amount?: number;
-  location?: ICoordinates;
-  worthy?: boolean;
-  object?: object;
-  testSerialization?: {
-    time: Date;
-    [key: string]: any;
-  };
+export interface IDSTestEntityIntId extends IDSTestEntityBase{
+  idThing?: string;
 }
 
 const schema = Pebblebed.createSchema<IDSTestEntityIntId>({
@@ -29,6 +21,7 @@ const schema = Pebblebed.createSchema<IDSTestEntityIntId>({
   }),
   testSerialization: types.serializedJson({
     indexed: false,
+    reviver: reviveDateObjects,
   }),
 }).setDefaultMeta({
   nullValueIfUnset: false,

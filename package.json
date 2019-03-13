@@ -5,7 +5,8 @@
     "node": ">=6.5.0"
   },
   "scripts": {
-    "test": "ts-node --preserve-symlinks --inspect src/runTests.ts"
+    "old-test": "ts-node --preserve-symlinks --inspect=9239 src/runTests.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,13 +29,27 @@
   },
   "homepage": "https://github.com/lostpebble/pebblebed#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11",
+    "pebblebed": "^1.0.0-test-only-4"
   },
   "devDependencies": {
-    "@google-cloud/datastore": "^1.4.1",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.0",
+    "@types/lodash": "^4.14.123",
+    "@google-cloud/datastore": "^3.1.2",
     "typescript": "^2.6.2",
     "ts-node": "^3.3.0",
     "joi": "^13.1.2",
-    "ioredis": "^3.2.2"
+    "ioredis": "^3.2.2",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/runtime": "^7.3.4",
+    "@types/jest": "^24.0.11",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0"
   }
 }

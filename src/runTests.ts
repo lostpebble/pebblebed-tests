@@ -3,15 +3,15 @@ import { waitSeconds } from "./utility";
 console.log("Pebbledbed: Running tests");
 
 import "./setupPebblebed";
-import { runAllOperations } from "./tests/_allOperations";
+import { runAllOperations } from "./tests-old/_allOperations";
 import { Pebblebed, PebblebedDefaultRedisCacheStore } from "pebblebed";
 import * as IoRedisLib from "ioredis";
 import { IDSTestEntityIntId, TestEntityIntIdModel } from "./entities/TestEntityIntId";
 import { TestEntityStringIdModel } from "./entities/TestEntityStringId";
-import { testPickingOut } from "./tests/_testPickingOut";
-import { runExample } from "./tests/candyExample";
-import { runCachingSerializationTests } from "./tests/_cachingSerializationTests";
-import { runCachingChecks } from "./tests/_cachingChecks";
+import { testPickingOut } from "./tests-old/_testPickingOut";
+import { runExample } from "./tests-old/candyExample";
+import { runCachingSerializationTests } from "./tests-old/_cachingSerializationTests";
+import { runCachingChecks } from "./tests-old/_cachingChecks";
 
 const redis = new IoRedisLib();
 
