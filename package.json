@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/lostpebble/pebblebed#readme",
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "pebblebed": "^1.0.0-test-only-4"
   },
   "devDependencies": {
