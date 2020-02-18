@@ -5,7 +5,7 @@ console.log("Pebbledbed: Running tests");
 import "./setupPebblebed";
 import { runAllOperations } from "./tests-old/_allOperations";
 import { Pebblebed, PebblebedDefaultRedisCacheStore } from "pebblebed";
-import * as IoRedisLib from "ioredis";
+import IoRedisLib from "ioredis";
 import { IDSTestEntityIntId, TestEntityIntIdModel } from "./entities/TestEntityIntId";
 import { TestEntityStringIdModel } from "./entities/TestEntityStringId";
 import { testPickingOut } from "./tests-old/_testPickingOut";
@@ -29,7 +29,7 @@ async function runTests() {
   // require("./errors/datastore-key-issue");
   console.log("Running allOperations");
 
-  // await runCachingChecks();
+  await runCachingChecks();
 
   await runAllOperations("BASIC_NO_CACHE");
   await testPickingOut();

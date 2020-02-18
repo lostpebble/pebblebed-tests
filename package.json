@@ -5,7 +5,7 @@
     "node": ">=6.5.0"
   },
   "scripts": {
-    "old-test": "ts-node --preserve-symlinks --inspect=9239 src/runTests.ts",
+    "old-test": "node -r ts-node/register --preserve-symlinks --inspect=9239 src/runTests.ts",
     "test": "jest"
   },
   "repository": {
@@ -33,13 +33,13 @@
     "pebblebed": "^1.0.0-test-only-4"
   },
   "devDependencies": {
-    "prettier": "^1.16.4",
+    "prettier": "^1.19.1",
     "ts-jest": "^24.0.0",
     "@types/lodash": "^4.14.123",
-    "@google-cloud/datastore": "^3.1.2",
-    "typescript": "^2.6.2",
-    "ts-node": "^3.3.0",
-    "joi": "^13.1.2",
+    "@google-cloud/datastore": "^5.0.5",
+    "typescript": "^3.7.5",
+    "ts-node": "^8.6.2",
+    "@hapi/joi": "^17.1.0",
     "ioredis": "^3.2.2",
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",

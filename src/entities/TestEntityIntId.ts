@@ -4,11 +4,13 @@ import { IDSTestEntityBase } from "./EntityCreation";
 import { reviveDateObjects } from "../utility";
 
 export interface IDSTestEntityIntId extends IDSTestEntityBase{
-  idThing?: string;
+  idThing?: string | number;
+  color?: string;
 }
 
 const schema = Pebblebed.createSchema<IDSTestEntityIntId>({
   idThing: types.integerId(),
+  color: types.string().default("red"),
   amount: types.double(),
   date: DefaultDateTimeNow,
   location: types.geoPoint(),

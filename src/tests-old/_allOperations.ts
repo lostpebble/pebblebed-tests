@@ -3,8 +3,9 @@ import { IDSTestEntityStringId, TestEntityStringIdModel } from "../entities/Test
 import { inspect } from "util";
 import { Pebblebed } from "pebblebed";
 import { printMarkMeasurements, waitSeconds } from "../utility";
+import { datastore } from "../setupPebblebed";
 const { performance, PerformanceEntry, PerformanceObserver } = require("perf_hooks");
-const datastore = require("@google-cloud/datastore");
+// const datastore = require("@google-cloud/datastore");
 
 const doubleQueryValue = datastore.double(20);
 
