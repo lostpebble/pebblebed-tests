@@ -24,7 +24,7 @@ describe(`It should cache entities`, () => {
         {
           num: 2322.22
         },
-        { num: 222222222 }
+        {num: 222222222}
       ]
     };
 
@@ -39,11 +39,16 @@ describe(`It should cache entities`, () => {
       .run();
 
     newEntity.idThing = genId;
+    newEntity.color = "red";
     newEntity[Pebblebed.ds.KEY] = savedEntity[Pebblebed.ds.KEY];
 
     expect(savedEntity).toEqual(newEntity);
 
+    console.log(genId);
+    console.log(savedEntity);
+
     const cachedEntity = await TestEntityIntIdModel.load(genId)
+      .enableCaching(true)
       .first()
       .run();
 
@@ -69,7 +74,7 @@ describe(`It should cache entities`, () => {
     delete savedEntity[Pebblebed.ds.KEY];
     delete cachedEntity[Pebblebed.ds.KEY];
 
-    expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
+    expect({newEntity, savedEntity, loadedNoCacheEntity}).toMatchSnapshot();
 
     await TestEntityIntIdModel.delete()
       .idsOrKeys(genId)
@@ -94,7 +99,7 @@ describe(`It should cache entities`, () => {
         latitude: 23.223,
         longitude: -33.2221
       },
-      object: { test: "something" },
+      object: {test: "something"},
       worthy: false,
       testSerialization: {
         somethingElse: "serialized",
@@ -104,7 +109,7 @@ describe(`It should cache entities`, () => {
         {
           num: 2322.22
         },
-        { num: 222222222 }
+        {num: 222222222}
       ],
       numberArray: [2222.22, 5123123, -99999.223]
     };
@@ -155,7 +160,7 @@ describe(`It should cache entities`, () => {
     delete savedEntity[Pebblebed.ds.KEY];
     delete cachedEntity[Pebblebed.ds.KEY];
 
-    expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
+    expect({newEntity, savedEntity, loadedNoCacheEntity}).toMatchSnapshot();
 
     await TestEntityIntIdModel.delete()
       .idsOrKeys(genId)
@@ -248,7 +253,7 @@ describe(`It should cache entities`, () => {
     delete savedEntity[Pebblebed.ds.KEY];
     delete cachedEntity[Pebblebed.ds.KEY];
 
-    expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
+    expect({newEntity, savedEntity, loadedNoCacheEntity}).toMatchSnapshot();
 
     cb();
   });
@@ -266,7 +271,7 @@ describe(`It should cache entities`, () => {
       },
       object: {
         test: "something",
-        somethingDeeper: { again: 222333, great: false, next: [10, 9, 8] }
+        somethingDeeper: {again: 222333, great: false, next: [10, 9, 8]}
       },
       worthy: false,
       testSerialization: {
@@ -277,7 +282,7 @@ describe(`It should cache entities`, () => {
         {
           num: 2322.22
         },
-        { num: 222222222 }
+        {num: 222222222}
       ],
       numberArray: [2222.22, 5123123, -99999.223]
     };
@@ -330,7 +335,7 @@ describe(`It should cache entities`, () => {
     delete loadedNoCacheEntity.date;
     delete savedEntity.date;
 
-    expect({ newEntity, savedEntity, loadedNoCacheEntity }).toMatchSnapshot();
+    expect({newEntity, savedEntity, loadedNoCacheEntity}).toMatchSnapshot();
 
     cb();
   });
